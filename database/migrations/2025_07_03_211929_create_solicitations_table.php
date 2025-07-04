@@ -13,9 +13,9 @@ return new class extends Migration
     {
         Schema::create('solicitations', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('user_id'); // usuário dono da solicitação
-            $table->string('type'); // tipo da solicitação (declaração, histórico, etc)
-            $table->text('description')->nullable(); // descrição opcional
+            $table->unsignedBigInteger('user_id');
+            $table->string('type');
+            $table->text('description')->nullable();
             $table->enum('status', ['pending', 'in_review', 'completed'])->default('pending');
             $table->timestamps();
 
