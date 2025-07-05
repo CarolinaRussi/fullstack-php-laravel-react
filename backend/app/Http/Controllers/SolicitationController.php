@@ -4,7 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Services\SolicitationService;
 use Illuminate\Http\Request;
-
+use App\Enums\SolicitationStatus;
+use Illuminate\Validation\Rules\Enum;
 
 class SolicitationController extends Controller
 {
@@ -20,7 +21,7 @@ class SolicitationController extends Controller
         $data = $request->validate([
             'type' => 'required|string|max:255',
             'description' => 'nullable|string',
-            'status' => 'nullable|in:pending,in_review,completed',
+            'status' =>  ['nullable', new Enum(SolicitationStatus::class)],
         ]);
 
         $data['user_id'] = $request->user()->id;
@@ -55,7 +56,8 @@ class SolicitationController extends Controller
         $data = $request->validate([
             'type' => 'sometimes|string|max:255',
             'description' => 'nullable|string',
-            'status' => 'in:pending,in_review,completed',
+            'status' => ['nullable', new Enum(SolicitationStatus::class)],
+            'response' => 'nullable|string',
         ]);
 
         $solicitation = $this->solicitationService->updateSolicitation($id, $data);

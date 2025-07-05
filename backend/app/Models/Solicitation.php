@@ -14,6 +14,7 @@ class Solicitation extends Model
         'type',
         'description',
         'status',
+        'response',
     ];
 
     public function user()

@@ -13,7 +13,7 @@
 
 ```bash
 git clone https://github.com/CarolinaRussi/fullstack-php-laravel-react.git
-cd fullstack-php-laravel-react
+cd fullstack-php-laravel-react/backend
 ```
 
 2. Suba os containers Docker (será feito build e start)
