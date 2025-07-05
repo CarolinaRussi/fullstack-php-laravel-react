@@ -2,17 +2,17 @@
 
 namespace App\Http\Controllers;
 
-use App\Repositories\Interfaces\SolicitationRepositoryInterface;
+use App\Services\SolicitationService;
 use Illuminate\Http\Request;
 
 
 class SolicitationController extends Controller
 {
-    protected $solicitationRepo;
+    protected $solicitationService;
 
-    public function __construct(SolicitationRepositoryInterface $solicitationRepo)
+    public function __construct(SolicitationService $solicitationService)
     {
-        $this->solicitationRepo = $solicitationRepo;
+        $this->solicitationService = $solicitationService;
     }
 
     public function store(Request $request)
@@ -25,14 +25,14 @@ class SolicitationController extends Controller
 
         $data['user_id'] = $request->user()->id;
 
-        $solicitation = $this->solicitationRepo->create($data);
+        $solicitation = $this->solicitationService->createSolicitation($data);
 
         return response()->json($solicitation, 201);
     }
 
     public function show($id)
     {
-        $solicitation = $this->solicitationRepo->findById($id);
+        $solicitation = $this->solicitationService->getSolicitationById($id);
 
         if (! $solicitation) {
             return response()->json(['message' => 'Solicitation not found'], 404);
@@ -45,7 +45,7 @@ class SolicitationController extends Controller
     {
         $userId = $request->user()->id;
 
-        $solicitations = $this->solicitationRepo->findByUserId($userId);
+        $solicitations = $this->solicitationService->getSolicitationsByUserId($userId);
 
         return response()->json($solicitations);
     }
@@ -58,14 +58,14 @@ class SolicitationController extends Controller
             'status' => 'in:pending,in_review,completed',
         ]);
 
-        $solicitation = $this->solicitationRepo->update($id, $data);
+        $solicitation = $this->solicitationService->updateSolicitation($id, $data);
 
         return response()->json($solicitation);
     }
 
     public function destroy($id)
     {
-        $deleted = $this->solicitationRepo->delete($id);
+        $deleted = $this->solicitationService->deleteSolicitation($id);
 
         return response()->json(['deleted' => $deleted]);
     }

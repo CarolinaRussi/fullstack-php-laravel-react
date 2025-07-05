@@ -13,14 +13,14 @@ class SolicitationService
         $this->solicitationRepository = $solicitationRepository;
     }
 
-    public function getAllSolicitations()
+    public function getSolicitationsByUserId(int $user_id)
     {
-        return $this->solicitationRepository->all();
+        return $this->solicitationRepository->findByUserId($user_id);
     }
 
     public function getSolicitationById(int $id)
     {
-        return $this->solicitationRepository->find($id);
+        return $this->solicitationRepository->findById($id);
     }
 
     public function createSolicitation(array $data)
