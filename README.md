@@ -5,12 +5,14 @@
 -   Docker Desktop instalado e rodando
 -   Git instalado
 
-## Como rodar
+# Backend (Laravel API)
 
-1. Clone o repositório
+## Como rodar o backend
+
+1. Clone o repositório e entre na pasta backend
 
 ```bash
-git clone https://github.com/seuusuario/fullstack-php-laravel-react.git
+git clone https://github.com/CarolinaRussi/fullstack-php-laravel-react.git
 cd fullstack-php-laravel-react
 ```
 
@@ -28,8 +30,11 @@ php artisan migrate
 exit
 ```
 
-4. Acesse a aplicação
+4. Acesse a API no navegador ou via cliente HTTP (Postman, Insomnia, etc):
 
 Abra no navegador:
 
 http://localhost:8000
+
+# Frontend
+(Instruções para rodar o frontend serão adicionadas futuramente.)
