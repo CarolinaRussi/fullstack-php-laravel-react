@@ -7,14 +7,15 @@ use App\Repositories\Interfaces\SolicitationRepositoryInterface;
 
 class SolicitationRepository implements SolicitationRepositoryInterface
 {
-    public function all()
-    {
-        return Solicitation::all();
-    }
 
-    public function find(int $id)
+    public function findById(int $id)
     {
         return Solicitation::find($id);
+    }
+
+    public function findByUserId(int $userId)
+    {
+        return Solicitation::where('user_id', $userId)->get();
     }
 
     public function create(array $data)
@@ -24,20 +25,14 @@ class SolicitationRepository implements SolicitationRepositoryInterface
 
     public function update(int $id, array $data)
     {
-        $solicitation = $this->find($id);
-        if ($solicitation) {
-            $solicitation->update($data);
-            return $solicitation;
-        }
-        return null;
+        $solicitation = Solicitation::findOrFail($id);
+        $solicitation->update($data);
+        return $solicitation;
     }
 
     public function delete(int $id)
     {
-        $solicitation = $this->find($id);
-        if ($solicitation) {
-            return $solicitation->delete();
-        }
-        return false;
+        $solicitation = Solicitation::findOrFail($id);
+        return $solicitation->delete();
     }
 }

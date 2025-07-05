@@ -17,9 +17,9 @@ Route::middleware('auth:sanctum')->group(function () {
 
     Route::post('/logout', [AuthController::class, 'logout']);
 
-
-    Route::get('/solicitations', [SolicitationController::class, 'index']);
-
-
     Route::post('/solicitations', [SolicitationController::class, 'store']);
+    Route::get('/solicitations/{id}', [SolicitationController::class, 'show']);
+    Route::put('/solicitations/{id}', [SolicitationController::class, 'update']);
+    Route::get('/my-solicitations', [SolicitationController::class, 'myRequests']);
+    Route::delete('/solicitations/{id}', [SolicitationController::class, 'destroy']);
 });
