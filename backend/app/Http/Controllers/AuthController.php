@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use App\Enums\UserType;
 use App\Models\User;
 
 class AuthController extends Controller
@@ -14,16 +15,16 @@ class AuthController extends Controller
             'name'     => 'required|string|max:255',
             'email'    => 'required|email|unique:users,email',
             'password' => 'required|string|min:6',
+            'user_type'  => 'required|in:admin,student',
         ]);
 
         $data['password'] = bcrypt($data['password']);
 
         $user = User::create($data);
-
         $token = $user->createToken('api-token')->plainTextToken;
 
         return response()->json([
-            'user'  => $user,
+            'user'  => $user->only(['id', 'name', 'email', 'user_type']),
             'token' => $token,
         ], 201);
     }
