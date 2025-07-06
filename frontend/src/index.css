@@ -1,0 +1,12 @@
+@import "tailwindcss";
+
+@theme {
+  /* Cores institucionais da Gran */
+  --color-gran-dark: #003366;
+  --color-gran-bright: #FFD100;
+  --color-text: #333333;
+  --color-background: #F5F5F5;
+
+  /* Fontes opcionais */
+  --font-display: "Inter", sans-serif;
+}
