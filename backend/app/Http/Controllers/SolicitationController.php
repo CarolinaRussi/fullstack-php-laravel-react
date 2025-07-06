@@ -31,12 +31,23 @@ class SolicitationController extends Controller
         return response()->json($solicitation, 201);
     }
 
+    public function findAll()
+    {
+        $solicitations = $this->solicitationService->getAllSolicitations();
+
+        if (! $solicitations) {
+            return response()->json(['message' => 'Nenhuma solicitação encontrada'], 404);
+        }
+
+        return response()->json($solicitations);
+    }
+
     public function show($id)
     {
         $solicitation = $this->solicitationService->getSolicitationById($id);
 
         if (! $solicitation) {
-            return response()->json(['message' => 'Solicitation not found'], 404);
+            return response()->json(['message' => 'Nenhuma solicitação encontrada'], 404);
         }
 
         return response()->json($solicitation);

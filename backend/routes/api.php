@@ -21,6 +21,7 @@ Route::middleware('auth:sanctum')->group(function () {
 
     Route::post('/solicitations', [SolicitationController::class, 'store']);
     Route::get('/solicitations/{id}', [SolicitationController::class, 'show']);
+    Route::get('/admin/solicitations', [SolicitationController::class, 'findAll']);
     Route::put('/solicitations/{id}', [SolicitationController::class, 'update']);
     Route::get('/my-solicitations', [SolicitationController::class, 'myRequests']);
     Route::delete('/solicitations/{id}', [SolicitationController::class, 'destroy']);

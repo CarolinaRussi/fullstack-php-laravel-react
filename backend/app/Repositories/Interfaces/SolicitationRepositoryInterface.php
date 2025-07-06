@@ -4,6 +4,7 @@ namespace App\Repositories\Interfaces;
 
 interface SolicitationRepositoryInterface
 {
+    public function findAll();
     public function findById(int $id);
     public function findByUserId(int $userId);
     public function create(array $data);

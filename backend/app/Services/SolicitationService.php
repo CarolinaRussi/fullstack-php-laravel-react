@@ -20,6 +20,11 @@ class SolicitationService
         return $this->solicitationRepository->findByUserId($user_id);
     }
 
+    public function getAllSolicitations()
+    {
+        return $this->solicitationRepository->findAll();
+    }
+
     public function getSolicitationById(int $id)
     {
         return $this->solicitationRepository->findById($id);

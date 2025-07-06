@@ -7,6 +7,10 @@ use App\Repositories\Interfaces\SolicitationRepositoryInterface;
 
 class SolicitationRepository implements SolicitationRepositoryInterface
 {
+    public function findAll()
+    {
+        return Solicitation::all();
+    }
 
     public function findById(int $id)
     {
