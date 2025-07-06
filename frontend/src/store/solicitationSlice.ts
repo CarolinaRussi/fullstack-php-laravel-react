@@ -28,6 +28,38 @@ const initialState: SolicitationState = {
   error: null,
 };
 
+export const createSolicitation = createAsyncThunk<
+  Solicitation,
+  { type: string; description: string; status: "pending" },
+  { rejectValue: string }
+>("solicitations/create", async (data, { rejectWithValue, getState }) => {
+  const state = getState() as RootState;
+  const token = state.auth.token;
+
+  try {
+    const response = await fetch(
+      `${import.meta.env.VITE_API_URL}/api/solicitations`,
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+        body: JSON.stringify(data),
+      }
+    );
+
+    if (!response.ok) {
+      const errorData = await response.json();
+      return rejectWithValue(errorData.message || "Erro ao criar solicitação.");
+    }
+
+    return await response.json();
+  } catch {
+    return rejectWithValue("Erro de conexão.");
+  }
+});
+
 export const fetchSolicitations = createAsyncThunk<
   Solicitation[],
   void,
