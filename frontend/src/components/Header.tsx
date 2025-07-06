@@ -44,7 +44,10 @@ export default function Header() {
               <Link to="/create" className="hover:underline">
                 Criar Solicitação
               </Link>
-              <button onClick={handleLogout} className="hover:underline">
+              <button
+                onClick={handleLogout}
+                className="hover:underline cursor-pointer"
+              >
                 Sair
               </button>
             </>
@@ -55,7 +58,10 @@ export default function Header() {
               <Link to="/admin/solicitations" className="hover:underline">
                 Solicitações de Alunos
               </Link>
-              <button onClick={handleLogout} className="hover:underline">
+              <button
+                onClick={handleLogout}
+                className="hover:underline cursor-pointer"
+              >
                 Sair
               </button>
             </>
