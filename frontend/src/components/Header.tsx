@@ -45,7 +45,7 @@ export default function Header() {
                 Criar Solicitação
               </Link>
               <button onClick={handleLogout} className="hover:underline">
-                Logout
+                Sair
               </button>
             </>
           )}
@@ -56,7 +56,7 @@ export default function Header() {
                 Solicitações de Alunos
               </Link>
               <button onClick={handleLogout} className="hover:underline">
-                Logout
+                Sair
               </button>
             </>
           )}
