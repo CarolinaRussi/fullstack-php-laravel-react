@@ -10,3 +10,11 @@
   /* Fontes opcionais */
   --font-display: "Inter", sans-serif;
 }
+
+.toast-gran {
+  background-color: var(--color-gran-dark);
+  color: white;
+  font-weight: 500;
+  border-left: 6px solid var(--color-gran-bright);
+  border-radius: 0.375rem;
+}
