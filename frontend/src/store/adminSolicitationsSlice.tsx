@@ -12,15 +12,18 @@ export const updateSolicitation = createAsyncThunk<
   const token = state.auth.token;
 
   try {
-    const res = await fetch(`http://localhost:8000/api/solicitations/${id}`, {
-      method: "PUT",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${token}`,
-        Accept: "application/json",
-      },
-      body: JSON.stringify({ status, response }),
-    });
+    const res = await fetch(
+      `${import.meta.env.VITE_API_URL}/solicitations/${id}`,
+      {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+          Accept: "application/json",
+        },
+        body: JSON.stringify({ status, response }),
+      }
+    );
 
     if (!res.ok) {
       const data = await res.json();
@@ -47,7 +50,7 @@ export const fetchAllSolicitations = createAsyncThunk<
     const token = getState().auth.token;
 
     const res = await fetch(
-      `${import.meta.env.VITE_API_URL}/api/admin/solicitations`,
+      `${import.meta.env.VITE_API_URL}/admin/solicitations`,
       {
         headers: {
           Authorization: `Bearer ${token}`,

@@ -41,17 +41,14 @@ export const registerUser = createAsyncThunk<
   { rejectValue: string }
 >("auth/registerUser", async (userData, { rejectWithValue }) => {
   try {
-    const response = await fetch(
-      `${import.meta.env.VITE_API_URL}/api/register`,
-      {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Accept: "application/json",
-        },
-        body: JSON.stringify(userData),
-      }
-    );
+    const response = await fetch(`${import.meta.env.VITE_API_URL}/register`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+      },
+      body: JSON.stringify(userData),
+    });
 
     if (!response.ok) {
       const errorData = await response.json();
@@ -78,17 +75,14 @@ export const loginUser = createAsyncThunk(
     { rejectWithValue }
   ) => {
     try {
-      const response = await fetch(
-        `${import.meta.env.VITE_API_URL}/api/login`,
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-            Accept: "application/json",
-          },
-          body: JSON.stringify(credentials),
-        }
-      );
+      const response = await fetch(`${import.meta.env.VITE_API_URL}/login`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+        body: JSON.stringify(credentials),
+      });
 
       if (!response.ok) {
         const errorData = await response.json();

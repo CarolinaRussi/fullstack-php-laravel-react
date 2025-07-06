@@ -1,9 +1,13 @@
 # Projeto Fullstack Laravel + React
 
+Este projeto é uma aplicação fullstack desenvolvida com Laravel (PHP) no backend e React no frontend, com gerenciamento de estado via Redux e estilização com Tailwind CSS. O sistema simula uma plataforma de solicitações acadêmicas, permitindo que usuários estudantes façam pedidos e acompanhem o andamento, enquanto administradores podem visualizar, responder e atualizar o status dessas solicitações.
+
+A API é protegida por autenticação via token (sanctum) e o sistema segue boas práticas como princípios SOLID, estrutura MVC, uso de Docker e integração com banco de dados MySQL.
+
 ## Requisitos
 
--   Docker Desktop instalado e rodando
--   Git instalado
+- Docker Desktop instalado e rodando
+- Git instalado
 
 # Backend (Laravel API)
 
@@ -32,9 +36,34 @@ exit
 
 4. Acesse a API no navegador ou via cliente HTTP (Postman, Insomnia, etc):
 
-Abra no navegador:
+http://localhost:8000/api
 
-http://localhost:8000
+# Frontend (React + Redux + Tailwind)
 
-# Frontend
-(Instruções para rodar o frontend serão adicionadas futuramente.)
+## Como rodar o frontend
+
+1. Em outro terminal, vá para a pasta `frontend`:
+
+```bash
+cd ../frontend
+```
+
+2. Instale as dependências do projeto:
+
+```bash
+npm install
+```
+
+3. Crie um arquivo .env na raiz da pasta frontend com a URL da API:
+
+VITE_API_URL=http://localhost:8000/api
+
+4. Inicie o servidor de desenvolvimento:
+
+```bash
+npm run dev
+```
+
+5. Acesse o navegador:
+
+http://localhost:5173

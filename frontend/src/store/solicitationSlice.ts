@@ -38,7 +38,7 @@ export const createSolicitation = createAsyncThunk<
 
   try {
     const response = await fetch(
-      `${import.meta.env.VITE_API_URL}/api/solicitations`,
+      `${import.meta.env.VITE_API_URL}/solicitations`,
       {
         method: "POST",
         headers: {
@@ -69,7 +69,7 @@ export const fetchSolicitations = createAsyncThunk<
 
   try {
     const response = await fetch(
-      `${import.meta.env.VITE_API_URL}/api/my-solicitations`,
+      `${import.meta.env.VITE_API_URL}/my-solicitations`,
       {
         headers: {
           Authorization: `Bearer ${token}`,
