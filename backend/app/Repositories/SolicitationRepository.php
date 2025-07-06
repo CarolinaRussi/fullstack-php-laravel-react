@@ -9,7 +9,7 @@ class SolicitationRepository implements SolicitationRepositoryInterface
 {
     public function findAll()
     {
-        return Solicitation::all();
+        return Solicitation::orderBy('created_at', 'desc')->get();;
     }
 
     public function findById(int $id)
